@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Check, Copy } from 'lucide-react';
+import { ArrowDown, Check, Copy } from 'lucide-react';
 import { isValidForBase, convert } from '@/lib/converter';
 
 const BASES = [
@@ -57,7 +57,12 @@ export function CommonConverter() {
           value={input}
           onChange={handleInputChange}
           placeholder={`Enter base ${sourceBase} number`}
+          className="font-mono"
         />
+      </div>
+
+      <div className="flex justify-center text-muted-foreground">
+        <ArrowDown className="h-4 w-4" />
       </div>
 
       <div className="space-y-3">
@@ -75,7 +80,7 @@ export function CommonConverter() {
           ))}
         </div>
         <div className="relative">
-          <Input value={output} readOnly placeholder="Result" className="pr-10" />
+          <Input value={output} readOnly placeholder="Result" className="pr-10 font-mono bg-muted" />
           <button
             onClick={handleCopy}
             disabled={!output}

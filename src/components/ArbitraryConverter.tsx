@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Check, Copy } from 'lucide-react';
+import { ArrowDown, Check, Copy } from 'lucide-react';
 import { isValidForBase, convert } from '@/lib/converter';
 
 export function ArbitraryConverter() {
@@ -51,7 +51,12 @@ export function ArbitraryConverter() {
           onChange={handleInputChange}
           disabled={!isSourceValid}
           placeholder={isSourceValid ? `Enter base ${sourceBase} number` : 'Enter a valid base first'}
+          className="font-mono"
         />
+      </div>
+
+      <div className="flex justify-center text-muted-foreground">
+        <ArrowDown className="h-4 w-4" />
       </div>
 
       <div className="space-y-3">
@@ -68,7 +73,7 @@ export function ArbitraryConverter() {
           <p className="text-sm text-destructive">Base must be between 2 and 36</p>
         )}
         <div className="relative">
-          <Input value={output} readOnly placeholder="Result" className="pr-10" />
+          <Input value={output} readOnly placeholder="Result" className="pr-10 font-mono bg-muted" />
           <button
             onClick={handleCopy}
             disabled={!output}
